@@ -1,0 +1,10 @@
+@use "./variables" as *;
+
+.btn {
+  padding: 10px 35px;
+  text-align: center;
+  width: 100%;
+  background-color: $purple;
+  border-radius: 7px;
+  color: $white;
+}
