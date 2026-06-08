@@ -7,4 +7,42 @@
   background-color: $purple;
   border-radius: 7px;
   color: $white;
+  border: none;
+  min-height: 50px;
+  font-size: 18px;
+  transition: 300ms ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-6px);
+    background-color: $purple_hover;
+  }
+
+  &.btn-back {
+    max-width: 100px;
+    padding: 0px;
+    background-color: transparent;
+    color: $black;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url("../assets/left-arrow.png") no-repeat center;
+      background-size: contain;
+      transition: 300ms ease;
+    }
+
+    &:hover {
+      transform: translateY(0px);
+      &::before {
+        transform: translateX(-5px);
+      }
+    }
+  }
 }

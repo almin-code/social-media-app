@@ -1,39 +1,37 @@
 import { useEffect, useState } from "react";
 import Header from "./components/header";
 import PostCard from "./components/post_card";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
-  const [message, setMessage] = useState("loading...")
-
-  useEffect(() => {
-    fetch("http://localhost/api/db-test")
-      .then((response) => response.json())
-      .then((data) => {
-        setMessage(`${data.message} Users: ${data.users_count}`)
-      })
-
-      .catch((error) => {
-        console.log(error)
-        setMessage("Nije moguce ucitati laravel api")
-      })
-  }, [])
-
-
   return (
-    <>
+    <BrowserRouter>
       <div className="feed_wrapper">
-        <div className="header_sticky">
-          <Header />
-        </div>
-        <main>
-          <div className="container feed_container">
-            <PostCard />
-          </div>
-        </main >
-      </div>
-    </>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <div className="header_sticky">
+                  <Header />
+                </div>
+                <main>
+                  <div className="container feed_container">
+                    <PostCard />
+                  </div>
+                </main>
+              </>
+            }
+          />
 
-  )
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;
